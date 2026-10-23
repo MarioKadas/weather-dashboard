@@ -1,0 +1,50 @@
+:root { --ink:#f5f7fa; --dim:rgba(245,247,250,.72); --panel:rgba(255,255,255,.12); --line:rgba(255,255,255,.2); --a:#2b6cb0; --b:#63b3ed; }
+* { box-sizing: border-box; }
+body { margin:0; font-family:'Bricolage Grotesque',system-ui,sans-serif; color:var(--ink); background:#111; }
+.app { min-height:100vh; padding:16px clamp(16px,4vw,48px) 48px; background:linear-gradient(160deg,var(--a),var(--b)); transition:background .4s; }
+.clear{--a:#1d5fa8;--b:#f0a95a} .cloud{--a:#4a5a6e;--b:#9fb0c3} .rain{--a:#243a52;--b:#5b7c99}
+.snow{--a:#5d7186;--b:#c8d6e5} .storm{--a:#1c1f33;--b:#5a4b7a} .night{--a:#0c1330;--b:#33436e}
+button,input { font:inherit; color:inherit; }
+button { cursor:pointer; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px 14px; }
+button:hover:not(:disabled) { background:rgba(255,255,255,.22); } button:disabled { opacity:.5; cursor:default; }
+:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+.bar { display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; max-width:1000px; margin:0 auto 16px; }
+.search { display:flex; flex:1 1 380px; gap:8px; flex-wrap:wrap; }
+.search input { flex:1 1 160px; min-width:0; padding:8px 12px; border-radius:8px; border:1px solid var(--line); background:rgba(0,0,0,.25); }
+.search input::placeholder { color:var(--dim); }
+.toggles { display:flex; gap:8px; }
+.seg { display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+.seg button { border:0; border-radius:0; background:transparent; padding:8px 12px; }
+.seg button[aria-pressed=true] { background:rgba(255,255,255,.9); color:#14202e; font-weight:600; }
+.results { list-style:none; max-width:1000px; margin:0 auto 12px; padding:4px; background:rgba(0,0,0,.45); border-radius:10px; }
+.results button { width:100%; text-align:left; border:0; background:transparent; display:flex; justify-content:space-between; gap:8px; }
+.results span { color:var(--dim); }
+.banner { max-width:1000px; margin:0 auto 12px; padding:10px 14px; border-radius:8px; background:rgba(0,0,0,.35); border-left:4px solid #f6c453; }
+.banner.err { border-color:#f56565; } .banner button { margin-left:8px; padding:4px 10px; }
+.empty { text-align:center; color:var(--dim); margin-top:15vh; }
+main { max-width:1000px; margin:0 auto; }
+.now { display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:flex-end; padding:8px 0 8px; }
+h1 { margin:0; font-size:clamp(1.6rem,4vw,2.4rem); font-weight:600; } .region { margin:2px 0 0; color:var(--dim); }
+.temp { margin:0; font-size:clamp(5.5rem,20vw,10rem); font-weight:800; line-height:.95; letter-spacing:-.04em; }
+.desc { margin:0; font-size:1.3rem; }
+.stats { display:grid; grid-template-columns:repeat(2,minmax(130px,1fr)); gap:10px; margin:0; flex:0 1 380px; }
+.stats div { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+dt { color:var(--dim); font-size:.85rem; } dd { margin:2px 0 0; font-size:1.4rem; font-weight:600; }
+.stamp { color:var(--dim); font-size:.9rem; margin:8px 0 20px; }
+.forecast { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; }
+.tabs { margin-bottom:14px; }
+ol { list-style:none; margin:0; padding:0; }
+.hours { display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; }
+.hours li { flex:0 0 68px; display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 0; border-radius:10px; }
+.hours li:first-child { background:rgba(255,255,255,.14); } .hours small { color:var(--dim); }
+.ico { font-size:1.6rem; }
+.days li { display:grid; grid-template-columns:64px 36px 1fr 48px 90px; align-items:center; gap:8px; padding:10px 0; border-top:1px solid var(--line); }
+.days li:first-child { border-top:0; } .days .cond { color:var(--dim); } .days small { text-align:right; color:var(--dim); }
+.range { text-align:right; } .range em { font-style:normal; color:var(--dim); margin-left:6px; }
+.skeleton { max-width:1000px; margin:8vh auto; display:grid; gap:14px; }
+.skeleton div { height:90px; border-radius:14px; background:var(--panel); animation:pulse 1.2s ease-in-out infinite; }
+.skeleton div:first-child { height:180px; }
+.footer {font-size: x-small;}
+@keyframes pulse { 50% { opacity:.4; } }
+@media (max-width:560px) { .days li { grid-template-columns:52px 30px 1fr 80px; } .days small { display:none; } .toggles { width:100%; justify-content:space-between; } }
+@media (prefers-reduced-motion:reduce) { .skeleton div { animation:none; } .app { transition:none; } }
